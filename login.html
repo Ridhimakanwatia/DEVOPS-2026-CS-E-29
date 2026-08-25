@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — Spec Match</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<button id="themeToggle" type="button">Light mode</button>
+
+<div class="stage">
+
+  <div class="ticket-pane">
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="id">ADMIT ONE — SESSION</span>
+        <span class="badge">SM · 2026</span>
+      </div>
+      <div class="perf"></div>
+
+      <div class="ticket-body">
+        <h1>Sign in</h1>
+        <p class="sub">Pick up where you left off.</p>
+
+        <div id="error">Enter both a valid email and password to continue.</div>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <div class="lab"><span class="num">01</span><span>Email</span></div>
+            <div class="input-wrap">
+              <input type="email" id="email" placeholder="name@example.com" autocomplete="username">
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="lab"><span class="num">02</span><span>Password</span></div>
+            <div class="input-wrap">
+              <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+              <button type="button" class="toggle-pw" id="togglePw">Show</button>
+            </div>
+          </div>
+
+          <div class="row-between">
+            <label class="remember">
+              <input type="checkbox" id="remember">
+              Keep me signed in
+            </label>
+            <a href="#" class="link">Forgot password?</a>
+          </div>
+
+          <button type="submit" id="signin">Sign in →</button>
+        </form>
+
+        <div class="alt-row">
+          <button class="alt-btn" type="button">Google</button>
+          <button class="alt-btn" type="button">Guest</button>
+        </div>
+
+        <div class="barcode" id="barcode"></div>
+        <div class="barcode-label">SM · 0000 0000 0000</div>
+
+        <p class="footer-note">New here? <a href="#">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+</html>
