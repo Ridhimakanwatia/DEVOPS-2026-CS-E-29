@@ -308,7 +308,7 @@
     color:var(--blue);
     text-decoration:none;
     font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
+    font-size:12px;
   }
   a.link:hover{text-decoration:underline;}
 
@@ -327,9 +327,6 @@
   html[data-theme="dark"] button#signin{color:var(--paper);}
   button#signin:hover{background:var(--blue-deep); border-color:var(--blue-deep);}
   button#signin:active{transform:scale(0.98);}
-
- 
-  
 
   .alt-row{
     display:flex; gap:8px;

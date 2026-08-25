@@ -39,4 +39,3 @@ form.addEventListener('submit', (e) => {
 [emailInput, pwInput].forEach(el => {
   el.addEventListener('input', () => { errorBox.style.display = 'none'; });
 });
-
