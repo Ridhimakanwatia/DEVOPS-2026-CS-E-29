@@ -40,12 +40,3 @@ form.addEventListener('submit', (e) => {
   el.addEventListener('input', () => { errorBox.style.display = 'none'; });
 });
 
-// barcode: random-width bars, generated once, deterministic-looking
-const barcode = document.getElementById('barcode');
-const widths = [2,1,3,1,2,2,1,4,1,2,3,1,1,2,4,1,2,1,3,2,1,1,2,3,1,4,1,2,2,1,3,1,2,1,4,2,1,1,3,2];
-widths.forEach(w => {
-  const bar = document.createElement('span');
-  bar.style.width = w + 'px';
-  bar.style.height = (16 + (w * 5)) + 'px';
-  barcode.appendChild(bar);
-});
