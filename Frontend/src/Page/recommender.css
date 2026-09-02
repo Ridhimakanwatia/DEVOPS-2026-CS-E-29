@@ -1,0 +1,26 @@
+.req-form{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:28px;
+  max-width:700px;
+  margin-bottom:36px;
+}
+.req-field{margin-bottom:24px;}
+.req-field:last-of-type{margin-bottom:0;}
+.req-field label{display:block; font-weight:600; font-size:14.5px; margin-bottom:10px;}
+
+.pills{display:flex; flex-wrap:wrap; gap:8px;}
+.pill{
+  font-size:13.5px;
+  padding:9px 14px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--surface);
+  color:var(--text);
+}
+.pill:hover{border-color:var(--accent);}
+.pill.active{background:var(--accent); color:#fff; border-color:var(--accent);}
+
+.results-section{max-width:700px;}
+.results-section h2{font-size:18px; margin-bottom:16px;}

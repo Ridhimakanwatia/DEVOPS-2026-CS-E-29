@@ -1,0 +1,15 @@
+.notfound-page{
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  background:var(--bg); padding:24px;
+}
+.notfound-card{
+  text-align:center;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:40px 32px;
+  max-width:340px;
+}
+.notfound-eyebrow{font-size:12px; color:var(--danger); font-weight:600; margin-bottom:8px;}
+.notfound-card h1{font-size:56px; color:var(--accent); margin-bottom:8px;}
+.notfound-sub{color:var(--text-soft); font-size:14px; margin-bottom:24px;}

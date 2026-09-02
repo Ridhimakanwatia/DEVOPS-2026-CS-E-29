@@ -1,0 +1,26 @@
+.match-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+.match-card-main h3{font-size:17px; margin-bottom:4px;}
+.match-price{font-size:14px; font-weight:600; color:var(--accent); margin-bottom:8px;}
+.match-blurb{font-size:13.5px; color:var(--text-soft); margin-bottom:10px; max-width:48ch;}
+.match-specs{list-style:none; font-size:12.5px; color:var(--text-soft);}
+.match-specs li{display:flex; justify-content:space-between; max-width:220px; padding:3px 0; border-bottom:1px solid var(--border);}
+.match-score{
+  flex-shrink:0;
+  align-self:flex-start;
+  background:#FFFBEB;
+  color:var(--amber);
+  border:1px solid #FDE68A;
+  border-radius:8px;
+  padding:6px 12px;
+  font-weight:700;
+  font-size:14px;
+}
