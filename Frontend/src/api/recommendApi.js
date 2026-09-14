@@ -10,3 +10,8 @@ export async function getDashboardSummary() {
   const res = await api.get('/dashboard');
   return res.data; // expected stats + recent matches
 }
+
+export async function getMatchHistory() {
+  const res = await api.get('/history');
+  return res.data; // expected: { matches: [ { name, price, matchScore, ... } ] }
+}

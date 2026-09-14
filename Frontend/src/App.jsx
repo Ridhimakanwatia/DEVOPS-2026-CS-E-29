@@ -5,6 +5,7 @@ import Login from './Page/login.jsx';
 import Signup from './Page/signup.jsx';
 import Dashboard from './Page/dashboard.jsx';
 import Recommender from './Page/recommender.jsx';
+import History from './Page/history.jsx';
 import NotFound from './Page/notFound.jsx';
 
 import ProtectedRoute from './components/protectdroute.jsx';
@@ -30,6 +31,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Recommender />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <ProtectedRoute>
+              <History />
             </ProtectedRoute>
           }
         />
