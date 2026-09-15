@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+/*import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/Authcontext.jsx';
 
 // Wrap any page with this — if the user isn't logged in, they get sent to /login instead.
@@ -14,3 +14,15 @@ function ProtectedRoute({ children }) {
 
 export default ProtectedRoute;
 
+*/
+
+
+import { useAuth } from "../context/Authcontext.jsx";
+
+function ProtectedRoute({ children }) {
+    const { isAuthenticated } = useAuth();
+
+    return children;
+}
+
+export default ProtectedRoute;
