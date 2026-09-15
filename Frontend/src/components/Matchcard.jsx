@@ -1,5 +1,4 @@
-import './matchcard.css';
-
+import "./Matchcard.css";
 // Shows one recommended laptop/PC as a card, with its match score.
 // Usage: <MatchCard item={{ name, price, matchScore, specs, blurb }} />
 function MatchCard({ item }) {

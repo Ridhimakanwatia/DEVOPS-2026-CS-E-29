@@ -9,6 +9,7 @@ function Sidebar() {
   const navItems = [
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'New match', path: '/recommender' },
+    { label: 'History', path: '/history' },
   ];
 
   return (
