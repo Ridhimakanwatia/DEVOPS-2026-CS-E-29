@@ -3,10 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 
-const authRoutes = require('./routes/authRoutes');
-const recommendRoutes = require('./routes/recommendRoutes');
-const historyRoutes = require('./routes/historyRoutes');
-const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/AuthRoutes');
+const recommendRoutes = require('./routes/RecommendRoutes');
+const historyRoutes = require('./routes/HistoryRoutes');
+const userRoutes = require('./routes/UserRoutes');
 
 const app = express();
 
