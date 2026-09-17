@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/AuthMiddleware');
 const Match = require('../models/Match');
 
 // Returns every past match for the logged-in user, flattened into

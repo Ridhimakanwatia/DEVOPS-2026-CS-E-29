@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/AuthMiddleware');
-const User = require('../models/User');
+const User = require('../models/user');
 
 // Returns the logged-in user's own profile — useful for confirming a token is valid
 router.get('/me', authMiddleware, async (req, res) => {
