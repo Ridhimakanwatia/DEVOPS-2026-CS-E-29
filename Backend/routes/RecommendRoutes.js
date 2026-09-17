@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
-const { recommend, dashboardSummary } = require('../controllers/recommendController');
+const { recommend, dashboardSummary } = require('../controllers/RecommendController');
 
 router.post('/recommend', authMiddleware, recommend);
 router.get('/dashboard', authMiddleware, dashboardSummary);
