@@ -1,0 +1,162 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [
+    {
+      "type": "row",
+      "title": "Application Health & Overview",
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "Service Status",
+      "gridPos": { "h": 5, "w": 6, "x": 0, "y": 1 },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            { "type": "value", "value": "1", "text": "UP" },
+            { "type": "value", "value": "0", "text": "DOWN" }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "value"
+      },
+      "targets": [{ "expr": "up{job=\"laptopwise-api\"}", "refId": "A" }]
+    },
+    {
+      "type": "stat",
+      "title": "Process Uptime",
+      "gridPos": { "h": 5, "w": 6, "x": 6, "y": 1 },
+      "fieldConfig": { "defaults": { "unit": "s", "decimals": 0 }, "overrides": [] },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [{ "expr": "time() - process_start_time_seconds{job=\"laptopwise-api\"}", "refId": "A" }]
+    },
+    {
+      "type": "stat",
+      "title": "Total HTTP Requests",
+      "gridPos": { "h": 5, "w": 6, "x": 12, "y": 1 },
+      "fieldConfig": { "defaults": { "decimals": 0 }, "overrides": [] },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [{ "expr": "sum(http_requests_total{job=\"laptopwise-api\"})", "refId": "A" }]
+    },
+    {
+      "type": "stat",
+      "title": "Active Requests",
+      "gridPos": { "h": 5, "w": 6, "x": 18, "y": 1 },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 10 },
+              { "color": "red", "value": 50 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [{ "expr": "sum(http_active_requests{job=\"laptopwise-api\"})", "refId": "A" }]
+    },
+    {
+      "type": "row",
+      "title": "HTTP Traffic & Latency",
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 6 },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Request Rate by Status Code",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 7 },
+      "fieldConfig": { "defaults": { "unit": "reqps", "custom": { "fillOpacity": 20, "lineWidth": 2, "spanNulls": true } }, "overrides": [] },
+      "targets": [{ "expr": "sum by (status_code) (rate(http_requests_total{job=\"laptopwise-api\"}[5m]))", "legendFormat": "{{status_code}}", "refId": "A" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "HTTP Request Latency (Quantiles)",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 7 },
+      "fieldConfig": { "defaults": { "unit": "s", "custom": { "fillOpacity": 10, "lineWidth": 2, "spanNulls": true } }, "overrides": [] },
+      "targets": [
+        { "expr": "histogram_quantile(0.5, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"laptopwise-api\"}[5m])))", "legendFormat": "p50 (Median)", "refId": "A" },
+        { "expr": "histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"laptopwise-api\"}[5m])))", "legendFormat": "p95", "refId": "B" },
+        { "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"laptopwise-api\"}[5m])))", "legendFormat": "p99", "refId": "C" }
+      ]
+    },
+    {
+      "type": "row",
+      "title": "System & Runtime Metrics",
+      "collapsed": false,
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 16 },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Node.js Process CPU Usage",
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 17 },
+      "fieldConfig": { "defaults": { "unit": "percentunit", "custom": { "fillOpacity": 25, "lineWidth": 2, "spanNulls": true } }, "overrides": [] },
+      "targets": [{ "expr": "rate(process_cpu_seconds_total{job=\"laptopwise-api\"}[5m])", "legendFormat": "CPU", "refId": "A" }]
+    },
+    {
+      "type": "timeseries",
+      "title": "Process Memory Consumption",
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 17 },
+      "fieldConfig": { "defaults": { "unit": "bytes", "custom": { "fillOpacity": 25, "lineWidth": 2, "spanNulls": true } }, "overrides": [] },
+      "targets": [
+        { "expr": "process_resident_memory_bytes{job=\"laptopwise-api\"}", "legendFormat": "RSS Memory", "refId": "A" },
+        { "expr": "nodejs_heap_size_used_bytes{job=\"laptopwise-api\"}", "legendFormat": "Heap Used", "refId": "B" },
+        { "expr": "nodejs_heap_size_total_bytes{job=\"laptopwise-api\"}", "legendFormat": "Heap Total", "refId": "C" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Event Loop Lag",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 17 },
+      "fieldConfig": { "defaults": { "unit": "ms", "custom": { "fillOpacity": 25, "lineWidth": 2, "spanNulls": true } }, "overrides": [] },
+      "targets": [{ "expr": "nodejs_eventloop_lag_seconds{job=\"laptopwise-api\"} * 1000", "legendFormat": "Event Loop Lag", "refId": "A" }]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["laptopwise", "api", "prometheus"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "LaptopWise API Monitoring",
+  "uid": "laptopwise-overview",
+  "version": 1
+}
+
